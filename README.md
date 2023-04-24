@@ -120,4 +120,37 @@ sudo systemctl start mongod
 
 ![image](https://user-images.githubusercontent.com/129314018/234063503-beb32a01-a377-4beb-adc9-8598f51032b4.png)
 
+# Reverse Proxy
+
+1. To allow for the reverse proxy to work, we navigate to the `sites-available` folder using `cd/etc/nginx/sites-available`
+2. We `sudo nano default` and edit the existing information with our own:
+
+```
+server {
+    listen 80;
+    server_name <ec2-app-ip>;
+
+ 
+
+    location / {
+        proxy_pass http://<ec2-app-ip>:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+3. Saving and exiting the default file, we then have to enable it by making a symbolic link
+```
+sudo ln -s /etc/nginx/sites-available/nodeapp.conf /etc/nginx/sites-enabled/default
+```
+4. `sudo systemctl reload nginx` - Reload nginx 
+5. `sudo systemctl enable nginx` - Enable nginx 
+6. We then `cd app` and run our app by using `node app.js`.
+7. If you see the below screen when just pasting the ip address, the reverse proxy works
+
+![image](https://user-images.githubusercontent.com/129314018/234067004-98e7e9e0-78ef-4b6a-b6f8-c9dc05693577.png)
+
 
