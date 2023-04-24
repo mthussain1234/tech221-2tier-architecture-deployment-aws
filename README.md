@@ -2,13 +2,12 @@
 
 Tasks:
 
-- Copy App - [x]
-- Install dependencies - []
-- ensure Security group allows port 3000 - []
-- npm install from app folder location - []
-- npm start - []
-- app should be available on port 3000 - []
-
+- [x] Copy App
+- [ ] Install dependencies
+- [ ] Ensure Security group allows port 3000
+- [ ] npm install from app folder location
+- [ ] npm start
+- [ ] App should be available on port 3000
 
 # How to use SCP command to copy app folder from local-host to AWS EC2 app instance
 
