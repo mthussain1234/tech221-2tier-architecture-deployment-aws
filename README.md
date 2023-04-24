@@ -111,12 +111,15 @@ sudo systemctl start mongod
 3. After saving and exiting we run `sudo systemctl restart mongod`, `sudo systemctl enable mongod` and  `sudo systemctl status mongod` to restart, enable and make sure that it is infact running
 4. Moving back to our app vm we `cd` then use the command `sudo nano .bashrc`
 5. This is to make our environment variable, in this case it is `DB_HOST=mongodb://<db-ip-address-ec2>:27017/posts`
-6. Save and exit
-7. We then do `source .bashrc` to apply the changes we made in step 5
-8. `cd app` then `npm install`. Once it is done we move on to the next step
-9. Enter `node seeds/seed.js` - this command is used to execute the code in the seed.js file using the Node.js runtime.
-10. Enter `node app.js` - install app.js and effectively deploy the app
-11. The EC2 instance IP should now be entered in the search bar like this `IP:3000/posts`
+
+[BLOCKERS] = **Make sure the database ip is specified in step 5 otherwise it will not work**
+
+7. Save and exit
+8. We then do `source .bashrc` to apply the changes we made in step 5
+9. `cd app` then `npm install`. Once it is done we move on to the next step
+10. Enter `node seeds/seed.js` - this command is used to execute the code in the seed.js file using the Node.js runtime.
+11. Enter `node app.js` - install app.js and effectively deploy the app
+12. The EC2 instance IP should now be entered in the search bar like this `IP:3000/posts`
 
 ![image](https://user-images.githubusercontent.com/129314018/234063503-beb32a01-a377-4beb-adc9-8598f51032b4.png)
 
