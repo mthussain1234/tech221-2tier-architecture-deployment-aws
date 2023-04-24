@@ -26,5 +26,10 @@ For files use `realpath`.
 
 Be sure to run the `scp` command into the Gitbash terminal within the `.ssh` file and not the EC2 terminal
 
+Once it is finished copying the files over, output should be: 
+
+![image](https://user-images.githubusercontent.com/129314018/233975963-705eb4f9-0d52-427f-8541-7cf4b9e2444b.png)
+
+
 
 
