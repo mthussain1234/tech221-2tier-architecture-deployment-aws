@@ -68,7 +68,56 @@ Once deploying app, on browser type `<ip-address>:3000`, we should see:
 ![image](https://user-images.githubusercontent.com/129314018/233981897-4d246721-3d64-42f9-b986-f4382b52f29f.png)
   
   
+# Create EC2 instance for database
 
+1. On AWS, navigating to EC2 and click launch instance
+2. Add your desired name and scroll to AMIs.
+3.  Here we select Ubuntu 18.04, which we can find in the `Browse More AMIs`, then on `Community AMIs`, scroll or search until you see the version below.
 
+![image](https://user-images.githubusercontent.com/129314018/234060073-1c3451f7-7fc7-4cf6-8935-66c59392d5cd.png)
+
+4.  On Security Groups, similar to the previous one we now add SSH connections with MY IP rules, also be sure to add extra security rules for ports 27017 and 3000, for the Mongo and App respectively as shown below.
+
+![image](https://user-images.githubusercontent.com/129314018/234060640-b0a5ca10-0194-4c35-b9cd-ac447929b2ee.png).
+
+5. Once done `Launch Instance`, after connect to it using SSH and copying and pasting the codes as seen before in :
+
+![image](https://user-images.githubusercontent.com/129314018/234061179-7d809120-53e1-4309-bd5e-12e448c33f87.png)
+
+6. In this instance, this is our DB instance, we want to install MongoDB, and can be done with this series of commands
+
+```
+sudo apt update -y 
+
+sudo apt upgrade -y
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927
+
+echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+
+sudo apt update -y 
+
+sudo apt upgrade -y
+
+sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20
+
+sudo systemctl start mongod
+```
+
+# Connect
+
+1. Now we have 2 virtual machines with AWS we want to connect them
+2. On the DB VM we `cd` and edit the `mongod.conf` file by using `sudo nano/etc/mongod.conf` , we change `bindIP` to 0.0.0.0
+3. After saving and exiting we run `sudo systemctl restart mongod`, `sudo systemctl enable mongod` and  `sudo systemctl status mongod` to restart, enable and make sure that it is infact running
+4. Moving back to our app vm we `cd` then use the command `sudo nano .bashrc`
+5. This is to make our environment variable, in this case it is `DB_HOST=mongodb://<db-ip-address-ec2>:27017/posts`
+6. Save and exit
+7. We then do `source .bashrc` to apply the changes we made in step 5
+8. `cd app` then `npm install`. Once it is done we move on to the next step
+9. Enter `node seeds/seed.js` - this command is used to execute the code in the seed.js file using the Node.js runtime.
+10. Enter `node app.js` - install app.js and effectively deploy the app
+11. The EC2 instance IP should now be entered in the search bar like this `IP:3000/posts`
+
+![image](https://user-images.githubusercontent.com/129314018/234063503-beb32a01-a377-4beb-adc9-8598f51032b4.png)
 
 
