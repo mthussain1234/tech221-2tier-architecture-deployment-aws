@@ -72,5 +72,3 @@ Once deploying app, on browser type `<ip-address>:3000`, we should see:
 
 
 
-
-
