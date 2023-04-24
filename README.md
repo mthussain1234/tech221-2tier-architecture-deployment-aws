@@ -41,5 +41,10 @@ Once it is finished copying the files over, output should be:
 ![image](https://user-images.githubusercontent.com/129314018/233975963-705eb4f9-0d52-427f-8541-7cf4b9e2444b.png)
 
 
+To add port 3000 we go on AWS and edit our EC2 inbound rules:
+
+![image](https://user-images.githubusercontent.com/129314018/233978937-3bc4b243-ac38-4121-8997-fc9d246cd707.png)
+
+
 
 
