@@ -45,6 +45,32 @@ To add port 3000 we go on AWS and edit our EC2 inbound rules:
 
 ![image](https://user-images.githubusercontent.com/129314018/233978937-3bc4b243-ac38-4121-8997-fc9d246cd707.png)
 
+# Dependencies
+
+We run the following commands to install the dependencies:
+
+`sudo apt-get install nodejs -y` - install nodejs
+
+`curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash –` - update version
+
+`sudo apt-get install nodejs -y` - install nodejs with updated version
+
+`sudo npm install pm2 -g` - install pm2 using npm
+
+`cd app` - navigate to folder with Node.js app
+
+`npm install` - install dependencies needed by Node.js app
+
+`node app.js` - Deploy app
+
+Once deploying app, on browser type `<ip-address>:3000`, we should see:
+  
+![image](https://user-images.githubusercontent.com/129314018/233981897-4d246721-3d64-42f9-b986-f4382b52f29f.png)
+  
+  
+
+
+
 
 
 
