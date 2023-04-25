@@ -5,6 +5,7 @@
 * Stands for Virtual Private Cloud
 * lets you launch AWS resources in a isolated virtual network which we have defined and customized
 * resembles traditional network, but you can use the scalable infrastructure of aws
+* A VPC allows you to secure your virtual networking environment, including your IP addresses, subnets and network gateways.
 
 
 
