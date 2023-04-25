@@ -110,7 +110,7 @@ sudo systemctl start mongod
 2. On the DB VM we `cd` and edit the `mongod.conf` file by using `sudo nano/etc/mongod.conf` , we change `bindIP` to 0.0.0.0
 3. After saving and exiting we run `sudo systemctl restart mongod`, `sudo systemctl enable mongod` and  `sudo systemctl status mongod` to restart, enable and make sure that it is infact running
 4. Moving back to our app vm we `cd` then use the command `sudo nano .bashrc`
-5. This is to make our environment variable, in this case it is `DB_HOST=mongodb://<db-ip-address-ec2>:27017/posts`
+5. This is to make our environment variable, in this case it is `export DB_HOST=mongodb://<db-ip-address-ec2>:27017/posts`
 
 [BLOCKERS] = **Make sure the database ip is specified in step 5 otherwise it will not work**
 
@@ -122,6 +122,12 @@ sudo systemctl start mongod
 12. The EC2 instance IP should now be entered in the search bar like this `IP:3000/posts`
 
 ![image](https://user-images.githubusercontent.com/129314018/234063503-beb32a01-a377-4beb-adc9-8598f51032b4.png)
+
+## Before doing reverse proxy
+
+`lsof -i :3000` - if app is still running, use this to identify which PID is runnning
+`kill -9 PID` - Kills the app using the PID
+`node app.js` - Launches app again
 
 # Reverse Proxy
 
